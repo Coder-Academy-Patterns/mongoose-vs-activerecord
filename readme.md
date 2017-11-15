@@ -27,7 +27,6 @@ const Song = mongoose.model('Song', {
   artist: String,
   album: String,
   genre: String,
-  artist: String,
   durationSeconds: Number
 });
 ```
@@ -74,6 +73,131 @@ gangnamStyle.save()
   - Finding a specific todo item
   - Changing a todo item’s description and persisting it to the database
 5. Write Mongoose code for the above list of items
+
+
+
+## Relations
+
+### ActiveRecord
+```
+> rails generate model Artist name
+> rails generate model Album name artist:references
+> rails generate model Genre name
+> rails generate model Song name artist:references album:references genre:references duration_seconds:integer
+> rails db:migrate
+```
+
+```rb
+class Artist
+  has_many :albums
+  has_many :songs
+end
+
+class Album
+  belongs_to :artist
+  has_many :songs
+end
+
+class Genre
+  has_many :songs
+end
+
+class Song
+  belongs_to :artist
+  belongs_to :album
+  belongs_to :genre
+end
+```
+
+```rb
+psy = Artist.create!(name: 'Psy')
+psy_6_rules = Album.create!(name: 'Psy 6 (Six Rules), Part 1', artist: psy)
+k_pop = Genre.create!(name: 'K-pop')
+
+gangnam_style = Song.new(name: 'Gangnam Style', artist: psy, album: psy_6_rules, genre: k_pop, duration_seconds: 219)
+if gangnam_style.save
+  # Successfully saved
+else
+  # Handle error
+end
+```
+
+### Mongoose
+```js
+const mongoose = require('mongoose');
+
+const Artist = mongoose.model('Artist', {
+  name: String
+});
+
+const Album = mongoose.model('Album', {
+  name: String,
+  artist: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Artist'
+  }
+});
+
+const Genre = mongoose.model('Genre', {
+  name: { // Only one genre can have a particular name
+    type: String,
+    unique: true
+  }
+});
+
+const Song = mongoose.model('Song', {
+  name: String,
+  artist: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Artist'
+  },
+  album: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Album'
+  },
+  genre: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Genre'
+  },
+  durationSeconds: Number
+});
+```
+
+```js
+async function seed() {
+  const psy = await Artist.create({ name: 'Psy' })
+  const psy6Rules = await Album.create({ name: 'Psy 6 (Six Rules), Part 1', artist: psy })
+  const kPop = await Genre.create({ name: 'K-pop' })
+  const gangnamStyle = new Song({ name: 'Gangnam Style', artist: psy, album: psy6Rules, genre: kPop, durationSeconds: 219 })
+  gangnamStyle.save()
+    .then(() => {
+      // Successfully saved
+    })
+    .catch((error) => {
+      // Handle error
+    })
+}
+```
+
+```js
+Artist.create({ name: 'Psy' })
+  .then((psy) => (
+    Album.create({ name: 'Psy 6 (Six Rules), Part 1', artist: psy })
+      .then((psy6Rules) => (
+        Genre.create({ name: 'K-pop' })
+          .then((kPop) => {
+            const gangnamStyle = new Song({ name: 'Gangnam Style', artist: psy, album: psy6Rules, genre: kPop, durationSeconds: 219 })
+            gangnamStyle.save()
+              .then(() => {
+                // Successfully saved
+              })
+              .catch((error) => {
+                // Handle error
+              })
+          )
+      })
+  ))
+```
 
 
 ### Recipe
