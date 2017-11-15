@@ -200,6 +200,9 @@ Artist.create({ name: 'Psy' })
 ```
 
 
-### Recipe
+### Recipe Challenge
 
-
+1. Work out the models and attributes for a Recipe (e.g. recipe, ingredient, etc)
+2. Plan the ERD
+3. Write or create Rails migrations & models, with the relations between say recipe and ingredients
+4. Write Mongoose models with relations
