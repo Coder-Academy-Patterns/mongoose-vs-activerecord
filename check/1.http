@@ -15,3 +15,6 @@ Content-Type: application/json
 {
   "name": "Glass Animals!"
 }
+
+###
+DELETE http://localhost:7000/artists/5a16b64f9ad26c64451a5ea1

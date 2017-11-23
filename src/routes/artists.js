@@ -44,7 +44,29 @@ router.patch('/artists/:id', (req, res) => {
   const attributes = req.body
   Artist.findByIdAndUpdate(id, attributes, { new: true })
     .then((artist) => {
-      res.json(artist)
+      if (artist) {
+        res.json(artist)
+      }
+      else {
+        res.status(404).json({ error: 'Artist not found' })
+      }
+    })
+    .catch((error) => {
+      res.status(500).json({ error: error })
+    })
+})
+
+router.delete('/artists/:id', (req, res) => {
+  const id = req.params.id
+
+  Artist.findByIdAndRemove(id)
+    .then((artist) => {
+      if (artist) {
+        res.json(artist)
+      }
+      else {
+        res.status(404).json({ error: 'Artist not found' })
+      }
     })
     .catch((error) => {
       res.status(500).json({ error: error })
