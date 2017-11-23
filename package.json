@@ -1,0 +1,16 @@
+{
+  "name": "mongoose-vs-activerecord",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Coder-Academy-Patterns/mongoose-vs-activerecord.git",
+  "author": "Patrick Smith <patrick@burntcaramel.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.4"
+  }
+}
