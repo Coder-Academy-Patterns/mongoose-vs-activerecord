@@ -38,4 +38,17 @@ router.post('/artists', (req, res) => {
     })
 })
 
+router.patch('/artists/:id', (req, res) => {
+  const id = req.params.id
+
+  const attributes = req.body
+  Artist.findByIdAndUpdate(id, attributes, { new: true })
+    .then((artist) => {
+      res.json(artist)
+    })
+    .catch((error) => {
+      res.status(500).json({ error: error })
+    })
+})
+
 module.exports = router
