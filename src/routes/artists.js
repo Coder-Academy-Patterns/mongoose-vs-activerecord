@@ -27,4 +27,15 @@ router.get('/artists/:id', (req, res) => {
     })
 })
 
+router.post('/artists', (req, res) => {
+  const attributes = req.body
+  Artist.create(attributes)
+    .then((artist) => {
+      res.json(artist)
+    })
+    .catch((error) => {
+      res.status(500).json({ error: error })
+    })
+})
+
 module.exports = router

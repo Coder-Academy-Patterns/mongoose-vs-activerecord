@@ -1,0 +1,9 @@
+GET http://localhost:7000/artists
+
+###
+POST http://localhost:7000/artists
+Content-Type: application/json
+
+{
+  "name": "Glass Animals"
+}
