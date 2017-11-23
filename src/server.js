@@ -5,10 +5,9 @@ const server = express()
 
 server.use(bodyParser.json())
 
-// server.use('/', [
-//   //require('./routes/tickets'),
-//   //require('./routes/animals'),
-// ])
+server.use('/', [
+  require('./routes/artists'),
+])
 
 server.listen(7000, () => {
   console.log('Started at http://localhost:7000')
