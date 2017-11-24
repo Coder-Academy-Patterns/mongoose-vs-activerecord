@@ -60,6 +60,7 @@ gangnamStyle.save()
 | record.**update**(attributes) | record.**update**(changes, { new: true }) |
 | record.**includes**(:director) | record.**populate**('director') |
 | Model.**find_or_create_by**(attributes) | Model.**findOneAndUpdate**(attributes, attributes, { upsert: true, runValidators: true }) |
+| Model.**increment_counter**(:attribute_name, id) | Model.**findByIdAndUpdate**(id, { $inc: { attribute: 1 } }) |
 
 
 ## Challenges
