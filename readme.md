@@ -74,7 +74,7 @@ gangnamStyle.save()
   - All todo items
   - All completed todo items
   - All incomplete todo items
-  - Finding a specific todo item
+  - Finding a todo item with a particular id
   - Changing a todo item’s description and persisting it to the database
 5. Write Mongoose code for the above list of items
 
