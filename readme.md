@@ -51,11 +51,13 @@ gangnamStyle.save()
 | Model.where(attributes) | Model.find(conditions) |
 | Model.find(id) | Model.findById() |
 | Model.find_by(attributes) | Model.findOne(conditions) |
-| Model.destroy(attributes) | Model.remove(conditions) |
+| Model.destroy(id) | Model.findByIdAndRemove(id) |
+| Model.update(id, attributes) | Model.findByIdAndUpdate(id, changes) |
 | Model.new(attributes) | new Model(doc) |
 | Model.count | Model.count() |
 | record.save | record.save() |
 | record.destroy | record.remove() |
+| record.update(attributes) | record.update(changes) |
 | record.includes(:director) | record.populate('director') |
 
 
