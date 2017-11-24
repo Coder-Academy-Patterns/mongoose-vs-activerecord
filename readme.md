@@ -49,7 +49,7 @@ gangnamStyle.save()
 ---------------|----------|
 | Model.**all** | Model.**find**() |
 | Model.**where**(attributes) | Model.**find**(conditions) |
-| Model.**find**(id) | Model.**findById**() |
+| Model.**find**(id) | Model.**findById**(id) |
 | Model.**find_by**(attributes) | Model.**findOne**(conditions) |
 | Model.**new**(attributes) | new Model(doc) |
 | Model.**destroy**(id) | Model.**findByIdAndRemove**(id) |
