@@ -59,6 +59,7 @@ gangnamStyle.save()
 | record.destroy | record.remove() |
 | record.update(attributes) | record.update(changes) |
 | record.includes(:director) | record.populate('director') |
+| Model.find_or_create_by(attributes) | Model.findOneAndUpdate(attributes, attributes, { upsert: true, runValidators: true }) |
 
 
 ## Challenges
