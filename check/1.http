@@ -1,6 +1,9 @@
 GET http://localhost:7000/artists
 
 ###
+GET http://localhost:7000/artists/5a16b64f9ad26c64451a5ea1
+
+###
 POST http://localhost:7000/artists
 Content-Type: application/json
 

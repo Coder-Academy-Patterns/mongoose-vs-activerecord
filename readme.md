@@ -63,7 +63,7 @@ gangnamStyle.save()
 
 ### Todo Item
 
-1. Create a model for a todo item
+1. Create a model for a todo item with description and completed
 2. Write out the steps (migration / code) for making it using Rails
 3. Write out the steps (code) for making it using Mongoose
 4. Write Rails code for querying the following:
