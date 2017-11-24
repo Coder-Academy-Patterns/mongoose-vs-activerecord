@@ -52,12 +52,12 @@ gangnamStyle.save()
 | Model.**find**(id) | Model.**findById**() |
 | Model.**find_by**(attributes) | Model.**findOne**(conditions) |
 | Model.**destroy**(id) | Model.**findByIdAndRemove**(id) |
-| Model.**update**(id, attributes) | Model.**findByIdAndUpdate**(id, changes) |
+| Model.**update**(id, attributes) | Model.**findByIdAndUpdate**(id, changes, { new: true }) |
 | Model.**new**(attributes) | new Model(doc) |
 | Model.**count** | Model.**count**() |
 | record.**save** | record.**save**() |
 | record.**destroy** | record.**remove**() |
-| record.**update**(attributes) | record.**update**(changes) |
+| record.**update**(attributes) | record.**update**(changes, { new: true }) |
 | record.**includes**(:director) | record.**populate**('director') |
 | Model.**find_or_create_by**(attributes) | Model.**findOneAndUpdate**(attributes, attributes, { upsert: true, runValidators: true }) |
 
