@@ -51,7 +51,8 @@ gangnamStyle.save()
 | Model.**where**(attributes) | Model.**find**(conditions) |
 | Model.**find**(id) | Model.**findById**(id) |
 | Model.**find_by**(attributes) | Model.**findOne**(conditions) |
-| Model.**new**(attributes) | new Model(doc) |
+| Model.**new**(attributes) | new Model(attributes) |
+| Model.**create**(attributes) | Model.create(attributes) |
 | Model.**destroy**(id) | Model.**findByIdAndRemove**(id) |
 | Model.**find_by**(conditions).**update**(changes) | Model.**findOneAndUpdate**(conditions, changes, { new: true, runValidators: true }) |
 | Model.**where**(conditions).**update_all**(changes) | Model.**updateMany**(conditions, changes) |
